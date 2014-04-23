@@ -5,9 +5,9 @@ global class Customer {
 	public Date DateOfBirth {get; set;}
 
 	public Customer (String fName, String lName, String email){
-		FirstName = fName;
-		LastName = lName;
-		Email = email;
+		this.FirstName = fName;
+		this.LastName = lName;
+		this.Email = email;
 	}
 	
 	public static List<Customer__c> Add(List<Customer> custs){
@@ -24,13 +24,13 @@ global class Customer {
 				newCusts.add(cust);
 			}
 
-			if(null != newCusts && newCusts.size() > 0){
-				try{
+			try{
+				if(null != newCusts && newCusts.size() > 0){					
 					insert newCusts;
 				}
-				catch(Exception e){
-					System.debug('***** ' + e.getMessage() + ' *****');
-				}
+			}
+			catch(Exception e){
+				System.debug('***** ' + e.getMessage() + ' *****');
 			}
 		}
 
